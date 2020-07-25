@@ -13,7 +13,7 @@ public class ParkingLot {
 
     public Ticket parking(Car car){
         carList.add(car);
-        Ticket ticket =  new Ticket(this.ticketList.size()+1+"",car.getCarId());
+        Ticket ticket =  new Ticket("Ticket"+this.ticketList.size()+1+"",car.getCarId());
         this.ticketList.add(ticket);
         return ticket;
     }

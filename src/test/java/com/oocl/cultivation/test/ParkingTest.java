@@ -165,5 +165,20 @@ class ParkingTest {
         assertEquals(true,isTipsRight);
     }
 
+    @Test
+    public void should_return_no_ticket_when_packingboy_parking_given_parkinglot_is_full(){
 
+        //given
+        Car car = new Car("Car11");
+        ParkingLot parkingLot = new ParkingLot();
+        ParkingBoy parkingBoy = new ParkingBoy(parkingLot);
+        for( int i = 0; i < 10; i++){
+            Car car0 = new Car("Car"+i);
+            parkingBoy.parking(car0);
+        }
+        //when
+        Ticket ticket = parkingBoy.parking(car);
+        //then
+        assertEquals(null,ticket);
+    }
 }
