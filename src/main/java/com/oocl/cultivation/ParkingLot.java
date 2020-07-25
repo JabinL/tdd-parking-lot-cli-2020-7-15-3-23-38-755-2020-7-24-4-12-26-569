@@ -7,6 +7,7 @@ public class ParkingLot {
 
     private List<Car> carList = new ArrayList<>();
     private List<Ticket> ticketList = new ArrayList<>();
+    private List<Ticket> haveUsedTicketList = new ArrayList<>();
     public ParkingLot() {
     }
 
@@ -72,5 +73,13 @@ public class ParkingLot {
 
     public void setTicketList(List<Ticket> ticketList) {
         this.ticketList = ticketList;
+    }
+
+    public List<Ticket> getHaveUsedTicketList() {
+        return haveUsedTicketList;
+    }
+
+    public void setHaveUsedTicketList(List<Ticket> haveUsedTicketList) {
+        this.haveUsedTicketList = haveUsedTicketList;
     }
 }

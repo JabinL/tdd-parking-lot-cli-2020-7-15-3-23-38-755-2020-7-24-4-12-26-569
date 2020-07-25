@@ -138,5 +138,33 @@ class ParkingTest {
         assertEquals(true,isTipsRight);
     }
 
+    @Test
+    public void should_print_tips_when_parkingboy_fetching_given_have_used_ticket(){
+        //given
+        Ticket ticket = new Ticket("T1","Car1");
+        List<Car> carList = new ArrayList<>();
+        List<Ticket> ticketList = new ArrayList<>();
+        List<Ticket> haveUsedTicketList = new ArrayList<>();
+        ticketList.add(new Ticket("T1","Car1"));
+        haveUsedTicketList.add(ticket);
+        carList.add(new Car("Car1"));
+        ParkingLot parkingLot = new ParkingLot();
+        parkingLot.setCarList(carList);
+        parkingLot.setTicketList(ticketList);
+        parkingLot.setHaveUsedTicketList(haveUsedTicketList);
+        ParkingBoy parkingBoy = new ParkingBoy(parkingLot);
+
+        //when
+        Car car  = parkingBoy.fetching(ticket);
+
+        //then
+        boolean isTipsRight = false;
+        if(systemOut().endsWith("Your ticket has been used, you can't fetch car!\n")){
+            isTipsRight = true ;
+        }
+
+        assertEquals(true,isTipsRight);
+    }
+
 
 }
