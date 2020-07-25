@@ -182,6 +182,30 @@ class ParkingTest {
         assertEquals(null,ticket);
     }
 
+    @Test
+    public void should_print_tips_when_parkingboy_fetching_given_no_ticket(){
+        //given
+        Ticket ticket = null;
+        List<Car> carList = new ArrayList<>();
+        List<Ticket> ticketList = new ArrayList<>();
+        ticketList.add(new Ticket("T1","Car1"));
+        carList.add(new Car("Car1"));
+        ParkingLot parkingLot = new ParkingLot();
+        parkingLot.setCarList(carList);
+        parkingLot.setTicketList(ticketList);
+        ParkingBoy parkingBoy = new ParkingBoy(parkingLot);
+
+        //when
+        Car car  = parkingBoy.fetching(ticket);
+
+        //then
+        boolean isTipsRight = false;
+        if(systemOut().endsWith("Please provide your parking ticket.\n")){
+            isTipsRight = true ;
+        }
+
+        assertEquals(true,isTipsRight);
+    }
 
 
 }
