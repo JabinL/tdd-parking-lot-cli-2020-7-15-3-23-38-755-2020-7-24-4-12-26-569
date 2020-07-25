@@ -131,7 +131,7 @@ class ParkingTest {
 
         //then
         boolean isTipsRight = false;
-        if(systemOut().endsWith("Your ticket is wrong, you can't fetch car!\n")){
+        if(systemOut().endsWith("Unrecognized parking ticket.\n")){
             isTipsRight = true ;
         }
 
@@ -159,7 +159,7 @@ class ParkingTest {
 
         //then
         boolean isTipsRight = false;
-        if(systemOut().endsWith("Your ticket has been used, you can't fetch car!\n")){
+        if(systemOut().endsWith("Unrecognized parking ticket.\n")){
             isTipsRight = true ;
         }
         assertEquals(true,isTipsRight);
@@ -181,4 +181,7 @@ class ParkingTest {
         //then
         assertEquals(null,ticket);
     }
+
+
+
 }

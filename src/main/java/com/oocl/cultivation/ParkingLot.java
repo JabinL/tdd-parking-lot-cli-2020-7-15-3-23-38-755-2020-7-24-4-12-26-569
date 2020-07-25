@@ -8,10 +8,14 @@ public class ParkingLot {
     private List<Car> carList = new ArrayList<>();
     private List<Ticket> ticketList = new ArrayList<>();
     private List<Ticket> haveUsedTicketList = new ArrayList<>();
+    private int capacity = 10;
     public ParkingLot() {
     }
 
     public Ticket parking(Car car){
+        if(isFull()){
+            return null;
+        }
         carList.add(car);
         Ticket ticket =  new Ticket("Ticket"+this.ticketList.size()+1+"",car.getCarId());
         this.ticketList.add(ticket);
@@ -25,11 +29,11 @@ public class ParkingLot {
             return null;
         }
         if(isTicketHaveUsed(ticket)){
-            System.out.print("Your ticket has been used, you can't fetch car!\n");
+            System.out.print("Unrecognized parking ticket.\n");
             return null;
         }
         if(findTicket(ticket) == null){
-            System.out.print("Your ticket is wrong, you can't fetch car!\n");
+            System.out.print("Unrecognized parking ticket.\n");
             return null;
         }
         String carId = ticket.getCarId();
@@ -57,6 +61,13 @@ public class ParkingLot {
             }
         }
         return null;
+    }
+
+    public boolean isFull(){
+        if( this.ticketList.size() < this.capacity ){
+            return false;
+        }
+        return true;
     }
 
     public Car findCar(String carId){
