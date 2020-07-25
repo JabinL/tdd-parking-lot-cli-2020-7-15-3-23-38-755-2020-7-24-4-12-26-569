@@ -9,25 +9,24 @@ public class ParkingLot {
     private List<Ticket> ticketList = new ArrayList<>();
     private List<Ticket> haveUsedTicketList = new ArrayList<>();
     private int capacity = 10;
+    private String parkingLotId ;
     public ParkingLot() {
     }
 
     public Ticket parking(Car car){
         if(isFull()){
+            System.out.print("Not enough position.\n");
             return null;
         }
         carList.add(car);
-        Ticket ticket =  new Ticket("Ticket"+this.ticketList.size()+1+"",car.getCarId());
+        Ticket ticket =  new Ticket("T"+this.ticketList.size()+1+"",car.getCarId(),this.parkingLotId);
         this.ticketList.add(ticket);
         return ticket;
     }
 
     public Car fetching(Ticket ticket){
 
-        if(ticket == null){
-            System.out.print("Please provide your parking ticket.\n");
-            return null;
-        }
+
         if(isTicketHaveUsed(ticket)){
             System.out.print("Unrecognized parking ticket.\n");
             return null;
@@ -105,5 +104,13 @@ public class ParkingLot {
 
     public void setHaveUsedTicketList(List<Ticket> haveUsedTicketList) {
         this.haveUsedTicketList = haveUsedTicketList;
+    }
+
+    public String getParkingLotId() {
+        return parkingLotId;
+    }
+
+    public void setParkingLotId(String parkingLotId) {
+        this.parkingLotId = parkingLotId;
     }
 }
