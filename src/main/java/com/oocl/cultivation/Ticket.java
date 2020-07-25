@@ -1,5 +1,7 @@
 package com.oocl.cultivation;
 
+import java.util.Objects;
+
 public class Ticket {
 
     private String ticketId;
@@ -28,4 +30,17 @@ public class Ticket {
     public void setCarId(String carId) {
         this.carId = carId;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Ticket ticket = (Ticket) o;
+        if (ticket.carId.equals(this.carId)&&ticket.ticketId.equals(this.ticketId)) {
+            return true;
+        }
+        return false;
+    }
+
+
 }

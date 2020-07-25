@@ -27,23 +27,23 @@ class ParkingTest {
         return outContent.toString();
     }
 
-//    @Test
-//    public void should_return_1_ticket_when_parkingboy_parking_given_1_car(){
-//        //given
-//        Car car  = new Car();
-//        ParkingLot parkingLot = new ParkingLot();
-//        ParkingBoy parkingBoy = new ParkingBoy(parkingLot);
-//
-//        //when
-//        Ticket ticket  = parkingBoy.parking(car);
-//
-//        //then
-//        boolean isNUll = true;
-//        if(ticket == null){
-//            isNUll = false ;
-//        }
-//        assertEquals(true,isNUll);
-//    }
+    @Test
+    public void should_return_1_ticket_when_parkingboy_parking_given_1_car(){
+        //given
+        Car car  = new Car("Car1");
+        ParkingLot parkingLot = new ParkingLot();
+        ParkingBoy parkingBoy = new ParkingBoy(parkingLot);
+
+        //when
+        Ticket ticket  = parkingBoy.parking(car);
+
+        //then
+        boolean isNUll = true;
+        if(ticket == null){
+            isNUll = false ;
+        }
+        assertEquals(true,isNUll);
+    }
 
 //    @Test
 //    public void should_return_car_when_parkingboy_fetching_given_1_ticket(){
@@ -67,8 +67,8 @@ class ParkingTest {
     public void should_return_2_tickets_when_parkingboy_parking_given_2_cars(){
         //given
         Ticket ticket = new Ticket();
-        Car car1 = new Car();
-        Car car2 = new Car();
+        Car car1 = new Car("Car1");
+        Car car2 = new Car("Car2");
         ParkingLot parkingLot = new ParkingLot();
         ParkingBoy parkingBoy = new ParkingBoy(parkingLot);
 
@@ -93,9 +93,12 @@ class ParkingTest {
         //given
         Ticket ticket = new Ticket("T1","Car1");
         List<Car> carList = new ArrayList<>();
+        List<Ticket> ticketList = new ArrayList<>();
+        ticketList.add(ticket);
         carList.add(new Car("Car1"));
         ParkingLot parkingLot = new ParkingLot();
         parkingLot.setCarList(carList);
+        parkingLot.setTicketList(ticketList);
         ParkingBoy parkingBoy = new ParkingBoy(parkingLot);
 
         //when
@@ -115,9 +118,12 @@ class ParkingTest {
         //given
         Ticket ticket = new Ticket("wrong","Car1");
         List<Car> carList = new ArrayList<>();
+        List<Ticket> ticketList = new ArrayList<>();
+        ticketList.add(new Ticket("T1","Car1"));
         carList.add(new Car("Car1"));
         ParkingLot parkingLot = new ParkingLot();
         parkingLot.setCarList(carList);
+        parkingLot.setTicketList(ticketList);
         ParkingBoy parkingBoy = new ParkingBoy(parkingLot);
 
         //when
@@ -125,7 +131,7 @@ class ParkingTest {
 
         //then
         boolean isTipsRight = false;
-        if(systemOut().endsWith("Your ticket is wrong, you can fetch car!\n")){
+        if(systemOut().endsWith("Your ticket is wrong, you can't fetch car!\n")){
             isTipsRight = true ;
         }
 
