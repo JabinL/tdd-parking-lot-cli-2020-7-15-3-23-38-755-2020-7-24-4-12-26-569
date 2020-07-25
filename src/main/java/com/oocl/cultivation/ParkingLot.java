@@ -25,7 +25,7 @@ public class ParkingLot {
     public Car fetching(Ticket ticket){
 
         if(ticket == null){
-            System.out.print("Your ticket is wrong, you can't fetch car!\n");
+            System.out.print("Please provide your parking ticket.\n");
             return null;
         }
         if(isTicketHaveUsed(ticket)){
