@@ -19,11 +19,15 @@ public class ParkingLot {
     }
 
     public Car fetching(Ticket ticket){
-        if(ticket == null || this.ticketList.size() == 0){
+
+        if(ticket == null){
             System.out.print("Your ticket is wrong, you can't fetch car!\n");
             return null;
         }
-
+        if(isTicketHaveUsed(ticket)){
+            System.out.print("Your ticket has been used, you can't fetch car!\n");
+            return null;
+        }
         if(findTicket(ticket) == null){
             System.out.print("Your ticket is wrong, you can't fetch car!\n");
             return null;
@@ -32,6 +36,14 @@ public class ParkingLot {
         return findCar(carId);
     }
 
+    public boolean isTicketHaveUsed(Ticket ticket){
+        for( int index = 0; index < this.haveUsedTicketList.size(); index++){
+            if(this.haveUsedTicketList.get(index).equals(ticket)){
+                return true;
+            }
+        }
+        return false;
+    }
     public Ticket findTicket(Ticket ticket){
 
         if(ticket == null){
@@ -40,6 +52,7 @@ public class ParkingLot {
         for( int index = 0; index < this.ticketList.size(); index++){
             if(this.ticketList.get(index).equals(ticket)){
                 this.ticketList.remove(index);
+                this.haveUsedTicketList.add(ticket);
                 return ticket;
             }
         }

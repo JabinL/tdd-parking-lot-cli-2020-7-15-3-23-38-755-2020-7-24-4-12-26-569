@@ -145,7 +145,7 @@ class ParkingTest {
         List<Car> carList = new ArrayList<>();
         List<Ticket> ticketList = new ArrayList<>();
         List<Ticket> haveUsedTicketList = new ArrayList<>();
-        ticketList.add(new Ticket("T1","Car1"));
+        ticketList.add(new Ticket("T2","Car2"));
         haveUsedTicketList.add(ticket);
         carList.add(new Car("Car1"));
         ParkingLot parkingLot = new ParkingLot();
@@ -162,7 +162,6 @@ class ParkingTest {
         if(systemOut().endsWith("Your ticket has been used, you can't fetch car!\n")){
             isTipsRight = true ;
         }
-
         assertEquals(true,isTipsRight);
     }
 
