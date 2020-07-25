@@ -25,4 +25,21 @@ class ParkingTest {
         }
         assertEquals(true,isNUll);
     }
+
+    @Test
+    public void should_return_car_when_parkingboy_fetching_given_1_ticket(){
+        //given
+        Ticket ticket = new Ticket();
+        ParkingBoy parkingBoy = new ParkingBoy();
+
+        //when
+        Car car  = parkingBoy.fetching(ticket);
+
+        //then
+        boolean isNotNUll = true;
+        if(car == null){
+            isNotNUll = false ;
+        }
+        assertEquals(true,isNotNUll);
+    }
 }

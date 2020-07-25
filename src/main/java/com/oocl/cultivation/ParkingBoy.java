@@ -7,4 +7,9 @@ public class ParkingBoy {
 
         return new Ticket();
     }
+
+    public Car fetching(Ticket ticket) {
+
+        return null;
+    }
 }
