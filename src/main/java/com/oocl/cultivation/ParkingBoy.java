@@ -13,7 +13,7 @@ public class ParkingBoy {
 
     public Ticket parking(Car car) {
 
-        return new Ticket();
+        return this.parkingLot.parking(car);
     }
 
     public Car fetching(Ticket ticket) {
