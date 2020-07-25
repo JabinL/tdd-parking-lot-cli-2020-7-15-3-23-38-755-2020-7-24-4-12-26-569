@@ -2,6 +2,7 @@ package com.oocl.cultivation.test;
 
 import com.oocl.cultivation.Car;
 import com.oocl.cultivation.ParkingBoy;
+import com.oocl.cultivation.ParkingLot;
 import com.oocl.cultivation.Ticket;
 import org.junit.jupiter.api.Test;
 
@@ -41,5 +42,29 @@ class ParkingTest {
             isNotNUll = false ;
         }
         assertEquals(true,isNotNUll);
+    }
+
+    @Test
+    public void should_return_2_tickets_when_parkingboy_parking_given_2_cars(){
+        //given
+        Ticket ticket = new Ticket();
+        Car car1 = new Car();
+        Car car2 = new Car();
+        ParkingLot parkingLot = new ParkingLot();
+        ParkingBoy parkingBoy = new ParkingBoy(parkingLot);
+
+        //when
+        Ticket ticket1  = parkingBoy.parking(car1);
+        Ticket ticket2 = parkingBoy.parking(car2);
+
+        //then
+        int countTicket = 0;
+        if(ticket1!=null){
+            countTicket++;
+        }
+        if(ticket2 != null){
+            countTicket++;
+        }
+        assertEquals(2,countTicket);
     }
 }
