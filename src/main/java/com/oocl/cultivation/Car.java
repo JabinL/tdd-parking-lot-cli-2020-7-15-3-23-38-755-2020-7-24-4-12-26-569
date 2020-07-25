@@ -9,6 +9,7 @@ public class Car {
 
     public Car() {
     }
+
     public String getCarId() {
         return carId;
     }
@@ -19,11 +20,11 @@ public class Car {
 
     @Override
     public boolean equals(Object obj) {
-        if( obj == null){
+        if (obj == null) {
             return false;
         }
-        if (obj instanceof Car){
-            if(((Car) obj).getCarId().equals(this.getCarId())){
+        if (obj instanceof Car) {
+            if (((Car) obj).getCarId().equals(this.getCarId())) {
                 return true;
             }
         }

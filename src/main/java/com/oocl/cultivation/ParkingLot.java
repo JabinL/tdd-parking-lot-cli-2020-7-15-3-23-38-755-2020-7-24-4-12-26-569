@@ -9,29 +9,30 @@ public class ParkingLot {
     private List<Ticket> ticketList = new ArrayList<>();
     private List<Ticket> haveUsedTicketList = new ArrayList<>();
     private int capacity = 10;
-    private String parkingLotId ;
+    private String parkingLotId;
+
     public ParkingLot() {
     }
 
-    public Ticket parking(Car car){
-        if(isFull()){
+    public Ticket parking(Car car) {
+        if (isFull()) {
             System.out.print("Not enough position.\n");
             return null;
         }
         carList.add(car);
-        Ticket ticket =  new Ticket("T"+this.ticketList.size()+1+"",car.getCarId(),this.parkingLotId);
+        Ticket ticket = new Ticket("T" + this.ticketList.size() + 1 + "", car.getCarId(), this.parkingLotId);
         this.ticketList.add(ticket);
         return ticket;
     }
 
-    public Car fetching(Ticket ticket){
+    public Car fetching(Ticket ticket) {
 
 
-        if(isTicketHaveUsed(ticket)){
+        if (isTicketHaveUsed(ticket)) {
             System.out.print("Unrecognized parking ticket.\n");
             return null;
         }
-        if(findTicket(ticket) == null){
+        if (findTicket(ticket) == null) {
             System.out.print("Unrecognized parking ticket.\n");
             return null;
         }
@@ -39,21 +40,22 @@ public class ParkingLot {
         return findCar(carId);
     }
 
-    public boolean isTicketHaveUsed(Ticket ticket){
-        for( int index = 0; index < this.haveUsedTicketList.size(); index++){
-            if(this.haveUsedTicketList.get(index).equals(ticket)){
+    public boolean isTicketHaveUsed(Ticket ticket) {
+        for (int index = 0; index < this.haveUsedTicketList.size(); index++) {
+            if (this.haveUsedTicketList.get(index).equals(ticket)) {
                 return true;
             }
         }
         return false;
     }
-    public Ticket findTicket(Ticket ticket){
 
-        if(ticket == null){
+    public Ticket findTicket(Ticket ticket) {
+
+        if (ticket == null) {
             return null;
         }
-        for( int index = 0; index < this.ticketList.size(); index++){
-            if(this.ticketList.get(index).equals(ticket)){
+        for (int index = 0; index < this.ticketList.size(); index++) {
+            if (this.ticketList.get(index).equals(ticket)) {
                 this.ticketList.remove(index);
                 this.haveUsedTicketList.add(ticket);
                 return ticket;
@@ -62,19 +64,19 @@ public class ParkingLot {
         return null;
     }
 
-    public boolean isFull(){
-        if( this.ticketList.size() < this.capacity ){
+    public boolean isFull() {
+        if (this.ticketList.size() < this.capacity) {
             return false;
         }
         return true;
     }
 
-    public Car findCar(String carId){
-        if( carId == null){
+    public Car findCar(String carId) {
+        if (carId == null) {
             return null;
         }
-        for( int index = 0; index < this.carList.size(); index++){
-            if(this.carList.get(index).getCarId().equals(carId)){
+        for (int index = 0; index < this.carList.size(); index++) {
+            if (this.carList.get(index).getCarId().equals(carId)) {
                 this.carList.remove(index);
                 return new Car(carId);
             }

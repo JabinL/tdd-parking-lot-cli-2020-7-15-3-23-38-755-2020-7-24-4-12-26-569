@@ -46,7 +46,7 @@ public class Ticket {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Ticket ticket = (Ticket) o;
-        if (ticket.carId.equals(this.carId)&&ticket.ticketId.equals(this.ticketId)&&ticket.parkingLotId.equals(parkingLotId)) {
+        if (ticket.carId.equals(this.carId) && ticket.ticketId.equals(this.ticketId) && ticket.parkingLotId.equals(parkingLotId)) {
             return true;
         }
         return false;

@@ -23,26 +23,27 @@ class ParkingTest {
     public static void setup() {
         System.setOut(new PrintStream(outContent));
     }
+
     private String systemOut() {
         return outContent.toString();
     }
 
     @Test
-    public void should_return_1_ticket_when_parkingboy_parking_given_1_car(){
+    public void should_return_1_ticket_when_parkingboy_parking_given_1_car() {
         //given
         Car car  = new Car("Car1");
         ParkingLot parkingLot = new ParkingLot();
         ParkingBoy parkingBoy = new ParkingBoy(parkingLot);
 
         //when
-        Ticket ticket  = parkingBoy.parking(car);
+        Ticket ticket = parkingBoy.parking(car);
 
         //then
         boolean isNUll = true;
-        if(ticket == null){
-            isNUll = false ;
+        if (ticket == null) {
+            isNUll = false;
         }
-        assertEquals(true,isNUll);
+        assertEquals(true, isNUll);
     }
 
 //    @Test
@@ -64,7 +65,7 @@ class ParkingTest {
 //    }
 
     @Test
-    public void should_return_2_tickets_when_parkingboy_parking_given_2_cars(){
+    public void should_return_2_tickets_when_parkingboy_parking_given_2_cars() {
         //given
         Ticket ticket = new Ticket();
         Car car1 = new Car("Car1");
@@ -73,23 +74,23 @@ class ParkingTest {
         ParkingBoy parkingBoy = new ParkingBoy(parkingLot);
 
         //when
-        Ticket ticket1  = parkingBoy.parking(car1);
+        Ticket ticket1 = parkingBoy.parking(car1);
         Ticket ticket2 = parkingBoy.parking(car2);
 
         //then
         int countTicket = 0;
-        if(ticket1!=null){
+        if (ticket1 != null) {
             countTicket++;
         }
-        if(ticket2 != null){
+        if (ticket2 != null) {
             countTicket++;
         }
-        assertEquals(2,countTicket);
-        
+        assertEquals(2, countTicket);
+
     }
 
     @Test
-    public void should_return_right_car_when_parkingboy_fetching_given_right_ticket(){
+    public void should_return_right_car_when_parkingboy_fetching_given_right_ticket() {
         //given
         Ticket ticket = new Ticket("T1","Car1");
         List<Car> carList = new ArrayList<>();
@@ -102,7 +103,7 @@ class ParkingTest {
         ParkingBoy parkingBoy = new ParkingBoy(parkingLot);
 
         //when
-        Car car  = parkingBoy.fetching(ticket);
+        Car car = parkingBoy.fetching(ticket);
 
         //then
         boolean isRightCar = false;
@@ -110,11 +111,11 @@ class ParkingTest {
             isRightCar = true ;
         }
 
-        assertEquals(true,isRightCar);
+        assertEquals(true, isRightCar);
     }
 
     @Test
-    public void should_print_tips_when_parkingboy_fetching_given_wrong_ticket(){
+    public void should_print_tips_when_parkingboy_fetching_given_wrong_ticket() {
         //given
         Ticket ticket = new Ticket("wrong","Car1");
         List<Car> carList = new ArrayList<>();
@@ -127,19 +128,19 @@ class ParkingTest {
         ParkingBoy parkingBoy = new ParkingBoy(parkingLot);
 
         //when
-        Car car  = parkingBoy.fetching(ticket);
+        Car car = parkingBoy.fetching(ticket);
 
         //then
         boolean isTipsRight = false;
-        if(systemOut().endsWith("Unrecognized parking ticket.\n")){
-            isTipsRight = true ;
+        if (systemOut().endsWith("Unrecognized parking ticket.\n")) {
+            isTipsRight = true;
         }
 
-        assertEquals(true,isTipsRight);
+        assertEquals(true, isTipsRight);
     }
 
     @Test
-    public void should_print_tips_when_parkingboy_fetching_given_have_used_ticket(){
+    public void should_print_tips_when_parkingboy_fetching_given_have_used_ticket() {
         //given
         Ticket ticket = new Ticket("T1","Car1");
         List<Car> carList = new ArrayList<>();
@@ -155,18 +156,18 @@ class ParkingTest {
         ParkingBoy parkingBoy = new ParkingBoy(parkingLot);
 
         //when
-        Car car  = parkingBoy.fetching(ticket);
+        Car car = parkingBoy.fetching(ticket);
 
         //then
         boolean isTipsRight = false;
-        if(systemOut().endsWith("Unrecognized parking ticket.\n")){
-            isTipsRight = true ;
+        if (systemOut().endsWith("Unrecognized parking ticket.\n")) {
+            isTipsRight = true;
         }
-        assertEquals(true,isTipsRight);
+        assertEquals(true, isTipsRight);
     }
 
     @Test
-    public void should_return_no_ticket_when_packingboy_parking_given_parkinglot_is_full(){
+    public void should_return_no_ticket_when_packingboy_parking_given_parkinglot_is_full() {
 
         //given
         Car car = new Car("Car11");
@@ -179,11 +180,11 @@ class ParkingTest {
         //when
         Ticket ticket = parkingBoy.parking(car);
         //then
-        assertEquals(null,ticket);
+        assertEquals(null, ticket);
     }
 
     @Test
-    public void should_print_tips_when_parkingboy_fetching_given_no_ticket(){
+    public void should_print_tips_when_parkingboy_fetching_given_no_ticket() {
         //given
         Ticket ticket = null;
         List<Car> carList = new ArrayList<>();
@@ -196,15 +197,15 @@ class ParkingTest {
         ParkingBoy parkingBoy = new ParkingBoy(parkingLot);
 
         //when
-        Car car  = parkingBoy.fetching(ticket);
+        Car car = parkingBoy.fetching(ticket);
 
         //then
         boolean isTipsRight = false;
-        if(systemOut().endsWith("Please provide your parking ticket.\n")){
-            isTipsRight = true ;
+        if (systemOut().endsWith("Please provide your parking ticket.\n")) {
+            isTipsRight = true;
         }
 
-        assertEquals(true,isTipsRight);
+        assertEquals(true, isTipsRight);
     }
 
     
