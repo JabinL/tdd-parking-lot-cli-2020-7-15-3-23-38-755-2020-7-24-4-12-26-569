@@ -5,6 +5,8 @@ import java.util.List;
 
 public class ParkingLot {
 
+
+
     private List<Car> carList = new ArrayList<>();
     public ParkingLot() {
     }
@@ -19,4 +21,11 @@ public class ParkingLot {
         return null;
     }
 
+    public List<Car> getCarList() {
+        return carList;
+    }
+
+    public void setCarList(List<Car> carList) {
+        this.carList = carList;
+    }
 }

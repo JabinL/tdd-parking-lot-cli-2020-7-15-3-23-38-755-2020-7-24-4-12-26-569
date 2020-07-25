@@ -6,6 +6,9 @@ import com.oocl.cultivation.ParkingLot;
 import com.oocl.cultivation.Ticket;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class ParkingTest {
@@ -67,5 +70,28 @@ class ParkingTest {
             countTicket++;
         }
         assertEquals(2,countTicket);
+    }
+
+    @Test
+    public void should_return_right_car_when_parkingboy_fetching_given_right_ticket(){
+        //given
+
+        Ticket ticket = new Ticket("T1","Car1");
+        List<Car> carList = new ArrayList<>();
+        carList.add(new Car("Car1"));
+        ParkingLot parkingLot = new ParkingLot();
+        parkingLot.setCarList(carList);
+        ParkingBoy parkingBoy = new ParkingBoy(parkingLot);
+
+        //when
+        Car car  = parkingBoy.fetching(ticket);
+
+        //then
+        boolean isRightCar = true;
+        if(car.getCarId().equals("Car1")){
+            isRightCar = false ;
+        }
+
+        assertEquals(true,isRightCar);
     }
 }
