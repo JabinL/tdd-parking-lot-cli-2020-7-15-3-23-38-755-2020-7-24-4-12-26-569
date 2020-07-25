@@ -7,12 +7,25 @@ import com.oocl.cultivation.Ticket;
 import org.junit.jupiter.api.Test;
 
 
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+
 class ParkingTest {
+
+    private static ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+
+    @BeforeAll
+    public static void setup() {
+        System.setOut(new PrintStream(outContent));
+    }
+    private String systemOut() {
+        return outContent.toString();
+    }
 
 //    @Test
 //    public void should_return_1_ticket_when_parkingboy_parking_given_1_car(){
@@ -72,12 +85,12 @@ class ParkingTest {
             countTicket++;
         }
         assertEquals(2,countTicket);
+        
     }
 
     @Test
     public void should_return_right_car_when_parkingboy_fetching_given_right_ticket(){
         //given
-
         Ticket ticket = new Ticket("T1","Car1");
         List<Car> carList = new ArrayList<>();
         carList.add(new Car("Car1"));
@@ -96,4 +109,28 @@ class ParkingTest {
 
         assertEquals(true,isRightCar);
     }
+
+    @Test
+    public void should_print_tips_when_parkingboy_fetching_given_wrong_ticket(){
+        //given
+        Ticket ticket = new Ticket("wrong","Car1");
+        List<Car> carList = new ArrayList<>();
+        carList.add(new Car("Car1"));
+        ParkingLot parkingLot = new ParkingLot();
+        parkingLot.setCarList(carList);
+        ParkingBoy parkingBoy = new ParkingBoy(parkingLot);
+
+        //when
+        Car car  = parkingBoy.fetching(ticket);
+
+        //then
+        boolean isTipsRight = false;
+        if(systemOut().endsWith("Your ticket is wrong, you can fetch car!\n")){
+            isTipsRight = true ;
+        }
+
+        assertEquals(true,isTipsRight);
+    }
+
+
 }
