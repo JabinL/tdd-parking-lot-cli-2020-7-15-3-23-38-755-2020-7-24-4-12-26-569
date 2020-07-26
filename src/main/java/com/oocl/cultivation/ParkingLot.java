@@ -15,6 +15,10 @@ public class ParkingLot {
         return capacity;
     }
 
+    public void setCapacity(int capacity) {
+        this.capacity = capacity;
+    }
+
     public ParkingLot() {
     }
 
