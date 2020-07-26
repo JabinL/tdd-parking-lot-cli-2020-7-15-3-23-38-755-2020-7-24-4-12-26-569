@@ -13,7 +13,6 @@ public class SmartParkingBoy  extends ParkingBoy{
         if (car == null)
             return null;
         ParkingLot parkingLot = findParkingLotWithMostContains();
-        System.out.println("ParkingLot:"+parkingLot);
         if( parkingLot != null){
             return parkingLot.parking(car);
         }

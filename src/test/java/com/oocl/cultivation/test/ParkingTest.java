@@ -303,7 +303,7 @@ class ParkingTest {
     @Test
     public void should_choose_P3_parkingLot_when_supersmartparkingboy_parking_given_3_parkinglots_P3_has_highest_positionrate() {
         //given
-        Car car = new Car("C2");
+        Car car = new Car("C4");
 
         ParkingLot parkingLot_1 = new ParkingLot();
         List<Ticket> ticketList_1 = new ArrayList<>();

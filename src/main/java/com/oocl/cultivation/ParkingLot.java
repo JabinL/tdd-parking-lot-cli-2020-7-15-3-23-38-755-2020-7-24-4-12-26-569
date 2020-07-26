@@ -123,4 +123,8 @@ public class ParkingLot {
     public void setParkingLotId(String parkingLotId) {
         this.parkingLotId = parkingLotId;
     }
+
+    public double getPositonRate(){
+        return (double)(1-(carList.size()/(double)capacity));
+    }
 }
