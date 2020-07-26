@@ -283,6 +283,8 @@ class ParkingTest {
         carList_3.add(new Car("C1"));
         carList_3.add(new Car("C2"));
         carList_3.add(new Car("C3"));
+        parkingLot_3.setTicketList(ticketList_3);
+        parkingLot_3.setCarList(carList_3);
 
         SmartParkingBoy parkingBoy = new SmartParkingBoy(parkingLot_1);
         parkingBoy.addParkingLot(parkingLot_2);

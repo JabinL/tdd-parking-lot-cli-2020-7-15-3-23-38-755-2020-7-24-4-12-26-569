@@ -11,6 +11,10 @@ public class ParkingLot {
     private int capacity = 10;
     private String parkingLotId;
 
+    public int getCapacity() {
+        return capacity;
+    }
+
     public ParkingLot() {
     }
 
@@ -20,7 +24,7 @@ public class ParkingLot {
             return null;
         }
         carList.add(car);
-        Ticket ticket = new Ticket("T" + this.ticketList.size() + 1 + "", car.getCarId(), this.parkingLotId);
+        Ticket ticket = new Ticket("T" + (this.ticketList.size() + 1) + "", car.getCarId(), getParkingLotId());
         this.ticketList.add(ticket);
         return ticket;
     }

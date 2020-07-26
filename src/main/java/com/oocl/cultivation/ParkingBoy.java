@@ -12,7 +12,7 @@ public class ParkingBoy {
     }
 
     public void addParkingLot(ParkingLot parkingLot) {
-        parkingLot.setParkingLotId("P" + parkingLotList.size() + 1);
+        parkingLot.setParkingLotId("P" +( parkingLotList.size() + 1));
         this.parkingLotList.add(parkingLot);
     }
 
@@ -35,4 +35,9 @@ public class ParkingBoy {
         System.out.print("Unrecognized parking ticket.\n");
         return null;
     }
+
+    public ArrayList<ParkingLot> getParkingLotList() {
+        return parkingLotList;
+    }
+
 }
