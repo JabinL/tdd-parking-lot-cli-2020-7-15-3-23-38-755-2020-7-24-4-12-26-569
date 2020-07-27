@@ -2,9 +2,9 @@ package com.oocl.cultivation;
 
 import java.util.ArrayList;
 
-public class ParkingBoy {
+public class ParkingBoy extends AbstractParkingBoy{
 
-    protected ArrayList<ParkingLot> parkingLotList = new ArrayList<>();
+
 
     public ParkingBoy(ParkingLot parkingLot) {
         parkingLot.setParkingLotId("P" + (parkingLotList.size() + 1));
