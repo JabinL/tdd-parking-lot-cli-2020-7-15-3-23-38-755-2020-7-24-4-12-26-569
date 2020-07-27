@@ -127,4 +127,7 @@ public class ParkingLot {
     public double getPositonRate(){
         return (double)(1-(carList.size()/(double)capacity));
     }
+    public int getRemainPositions(){
+        return this.capacity - carList.size();
+    }
 }
