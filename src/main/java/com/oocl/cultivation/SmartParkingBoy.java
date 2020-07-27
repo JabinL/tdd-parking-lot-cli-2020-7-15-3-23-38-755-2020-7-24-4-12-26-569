@@ -1,9 +1,8 @@
 package com.oocl.cultivation;
 
-import java.sql.SQLOutput;
 import java.util.ArrayList;
 
-public class SmartParkingBoy  extends ParkingBoy{
+public class SmartParkingBoy extends ParkingBoy{
     public SmartParkingBoy(ParkingLot parkingLot) {
         super(parkingLot);
     }
@@ -20,10 +19,15 @@ public class SmartParkingBoy  extends ParkingBoy{
         return null;
     }
 
+    @Override
+    public ArrayList<ParkingLot> getParkingLotList() {
+        return super.getParkingLotList();
+    }
+
     public ParkingLot findParkingLotWithMostContains(){
 
         int indexOfParingLotWithMostContains = -1;
-        ArrayList<ParkingLot> parkingLotList = super.getParkingLotList();
+        ArrayList<ParkingLot> parkingLotList = getParkingLotList();
         int remainPositons = 0;
         int maxRemainPoositions = 0;
         int capacity = 0;

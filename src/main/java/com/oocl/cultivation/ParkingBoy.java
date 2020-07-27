@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class ParkingBoy {
 
-    private ArrayList<ParkingLot> parkingLotList = new ArrayList<>();
+    protected ArrayList<ParkingLot> parkingLotList = new ArrayList<>();
 
     public ParkingBoy(ParkingLot parkingLot) {
         parkingLot.setParkingLotId("P" + (parkingLotList.size() + 1));
@@ -17,7 +17,13 @@ public class ParkingBoy {
     }
 
     public Ticket parking(Car car) {
-        return this.parkingLot.parking(car);
+        for(ParkingLot parkingLot: parkingLotList){
+            if(!parkingLot.isFull()){
+                return parkingLot.parking(car);
+            }
+        }
+        System.out.print("Not enough position.\n");
+        return null;
     }
 
     public Car fetching(Ticket ticket) {

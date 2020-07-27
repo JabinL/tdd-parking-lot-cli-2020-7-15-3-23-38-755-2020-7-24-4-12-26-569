@@ -29,7 +29,7 @@ class ParkingTest {
     @Test
     public void should_return_1_ticket_when_parkingboy_parking_given_1_car() {
         //given
-        Car car  = new Car("Car1");
+        Car car  = new Car("C1");
         ParkingLot parkingLot = new ParkingLot();
         ParkingBoy parkingBoy = new ParkingBoy(parkingLot);
 
@@ -40,7 +40,8 @@ class ParkingTest {
         boolean isNUll = true;
         if (ticket == null) {
             isNUll = false;
-        }
+        } //TODO:assertNotNull
+
         assertEquals(true, isNUll);
     }
 
@@ -66,8 +67,8 @@ class ParkingTest {
     public void should_return_2_tickets_when_parkingboy_parking_given_2_cars() {
         //given
         Ticket ticket = new Ticket();
-        Car car1 = new Car("Car1");
-        Car car2 = new Car("Car2");
+        Car car1 = new Car("C1");
+        Car car2 = new Car("C2");
         ParkingLot parkingLot = new ParkingLot();
         ParkingBoy parkingBoy = new ParkingBoy(parkingLot);
 
@@ -90,11 +91,11 @@ class ParkingTest {
     @Test
     public void should_return_right_car_when_parkingboy_fetching_given_right_ticket() {
         //given
-        Ticket ticket = new Ticket("T1","Car1");
+        Ticket ticket = new Ticket("T1","C1","P1");
         List<Car> carList = new ArrayList<>();
         List<Ticket> ticketList = new ArrayList<>();
         ticketList.add(ticket);
-        carList.add(new Car("Car1"));
+        carList.add(new Car("C1"));
         ParkingLot parkingLot = new ParkingLot();
         parkingLot.setCarList(carList);
         parkingLot.setTicketList(ticketList);
@@ -105,7 +106,7 @@ class ParkingTest {
 
         //then
         boolean isRightCar = false;
-        if(car.getCarId().equals("Car1")){
+        if(car.getCarId().equals("C1")){
             isRightCar = true ;
         }
 
@@ -115,11 +116,11 @@ class ParkingTest {
     @Test
     public void should_print_tips_when_parkingboy_fetching_given_wrong_ticket() {
         //given
-        Ticket ticket = new Ticket("wrong","Car1");
+        Ticket ticket = new Ticket("wrong","C1","P1");
         List<Car> carList = new ArrayList<>();
         List<Ticket> ticketList = new ArrayList<>();
-        ticketList.add(new Ticket("T1","Car1"));
-        carList.add(new Car("Car1"));
+        ticketList.add(new Ticket("T1","C1","P1"));
+        carList.add(new Car("C1"));
         ParkingLot parkingLot = new ParkingLot();
         parkingLot.setCarList(carList);
         parkingLot.setTicketList(ticketList);
@@ -140,11 +141,11 @@ class ParkingTest {
     @Test
     public void should_print_tips_when_parkingboy_fetching_given_have_used_ticket() {
         //given
-        Ticket ticket = new Ticket("T1","Car1");
+        Ticket ticket = new Ticket("T1","C1","P1");
         List<Car> carList = new ArrayList<>();
         List<Ticket> ticketList = new ArrayList<>();
         List<Ticket> haveUsedTicketList = new ArrayList<>();
-        ticketList.add(new Ticket("T2","Car2"));
+        ticketList.add(new Ticket("T2","C2","P1"));
         haveUsedTicketList.add(ticket);
         carList.add(new Car("Car1"));
         ParkingLot parkingLot = new ParkingLot();
@@ -187,7 +188,7 @@ class ParkingTest {
         Ticket ticket = null;
         List<Car> carList = new ArrayList<>();
         List<Ticket> ticketList = new ArrayList<>();
-        ticketList.add(new Ticket("T1","Car1"));
+        ticketList.add(new Ticket("T1","C1","P1"));
         carList.add(new Car("Car1"));
         ParkingLot parkingLot = new ParkingLot();
         parkingLot.setCarList(carList);
@@ -286,7 +287,7 @@ class ParkingTest {
         parkingLot_3.setTicketList(ticketList_3);
         parkingLot_3.setCarList(carList_3);
 
-        SmartParkingBoy parkingBoy = new SmartParkingBoy(parkingLot_1);
+        ParkingBoy parkingBoy = new SmartParkingBoy(parkingLot_1);
         parkingBoy.addParkingLot(parkingLot_2);
         parkingBoy.addParkingLot(parkingLot_3);
         //when
@@ -341,7 +342,7 @@ class ParkingTest {
         parkingLot_3.setCarList(carList_3);
         parkingLot_3.setCapacity(20);
 
-        SuperSmartParkingBoy parkingBoy = new SuperSmartParkingBoy(parkingLot_1);
+        ParkingBoy parkingBoy = new SuperSmartParkingBoy(parkingLot_1);
         parkingBoy.addParkingLot(parkingLot_2);
         parkingBoy.addParkingLot(parkingLot_3);
         //when

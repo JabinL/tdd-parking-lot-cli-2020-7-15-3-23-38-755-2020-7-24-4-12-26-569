@@ -22,10 +22,15 @@ public class SuperSmartParkingBoy extends SmartParkingBoy{
         return null;
     }
 
+    @Override
+    public ArrayList<ParkingLot> getParkingLotList() {
+        return super.getParkingLotList();
+    }
+
     public ParkingLot findParkingLotWithHighestPositionRate(){
 
         int indexOfParingLotWithHighestPositionRate = -1;
-        ArrayList<ParkingLot> parkingLotList = super.getParkingLotList();
+        ArrayList<ParkingLot> parkingLotList = getParkingLotList();
         double maxPositionRate = 0;
         double positionRate = 0;
         ParkingLot parkingLot = null;
